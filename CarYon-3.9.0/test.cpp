@@ -11,10 +11,19 @@ int main()
         csh();
         int n = cyrand(1, 1e5);
         in(n);
+        instring(" ");
+        int d = cyrand(1, 1e5);
+        in(d);
+        instring("\n");
+        for (int i = 0; i < n - 1; i++)
+        {
+            in(cyrand(0, 1e5));
+            instring(" ");
+        }
         instring("\n");
         for (int i = 0; i < n; i++)
         {
-            in(cyrand(0, 1));
+            in(cyrand(0, 1e5));
             instring(" ");
         }
         // Please finish these rows
