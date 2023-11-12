@@ -3,24 +3,15 @@ using namespace std;
 
 int main()
 {
-    int n, cut = 0;
-    char x;
-    vector<int> v1, v2;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    queue<int> que;
+    srand(time(0));
+    for (int i = 0; i < 10; i++)
+        que.push(rand() % 100 + 1);
+    sort(&que.front(), &que.back() + 1);
+    while (!que.empty())
     {
-        cin >> x;
-        v1.push_back(x - '0');
-        v2.push_back(i + 1);
+        cout << que.front() << ' ';
+        que.pop();
     }
-    do
-    {
-        cut++;
-        if (v1 == v2)
-        {
-            cout << cut << endl;
-            return 0;
-        }
-    } while (next_permutation(v2.begin(), v2.end()));
     return 0;
 }
