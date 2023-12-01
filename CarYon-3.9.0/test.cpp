@@ -9,22 +9,17 @@ int main()
     makein(1, 10)
     {
         csh();
-        int n = cyrand(1, 1e5);
-        in(n);
-        instring(" ");
-        int d = cyrand(1, 1e5);
-        in(d);
+        int w = cyrand(80, 200);
+        in(w);
         instring("\n");
-        for (int i = 0; i < n - 1; i++)
-        {
-            in(cyrand(0, 1e5));
-            instring(" ");
-        }
+        int n = cyrand(1, 3 * 1e4);
+        in(n);
         instring("\n");
         for (int i = 0; i < n; i++)
         {
-            in(cyrand(0, 1e5));
-            instring(" ");
+            int pi = cyrand(5, w);
+            in(pi);
+            instring("\n");
         }
         // Please finish these rows
     }

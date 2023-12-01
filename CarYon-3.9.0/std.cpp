@@ -1,46 +1,31 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
 using namespace std;
-typedef long long int ll;
-const int maxn = 4e5 + 10;
-ll f[maxn], v[maxn], b[maxn];
-int n, wz[maxn];
-ll d, mi[maxn], a[maxn];
-ll dfs(int i)
-{
-    if (i == 1)
-        return 0;
-    if (f[i] != -1)
-        return f[i];
-    else
-    {
-        if (wz[i] == i)
-            return dfs(wz[i - 1]) + a[wz[i - 1]] * (b[i] - b[wz[i - 1]]);
-        else
-            return dfs(wz[i]) + a[wz[i]] * (b[i] - b[wz[i]]);
-    }
-}
+int things[30001];
+bool vis[30001]; // 存储这个纪念品是不是已经被选了
 int main()
 {
-    // freopen("road.in", "r", stdin);
-    // freopen("road.out", "w", stdout);
-    memset(f, -1, sizeof(f));
-    scanf("%d%lld", &n, &d);
-    mi[0] = 1145141919810LL; //
-    for (int i = 1; i < n; i++)
-    {
-        scanf("%lld", &v[i]), v[i] += v[i - 1];
-        b[i + 1] = (v[i] + d - 1) / d;
-        // b[i]，到站点 i 至少要加多少升的油
-    }
+    int w, n; // w表每组纪念品价格之和的上上限，n表购来的纪念品的总件数
+    cin >> w >> n;
     for (int i = 1; i <= n; i++)
-    {
-        scanf("%lld", &a[i]);
-        mi[i] = min(mi[i - 1], a[i]);
-        if (mi[i] == mi[i - 1])
-            wz[i] = wz[i - 1];
-        else
-            wz[i] = i;
-    }
-    printf("%lld\n", dfs(n));
+        cin >> things[i];
+    sort(things + 1, things + 1 + n); // 将纪念品价格从高到低排序
+    int ans = 0;                      // 一共需要分几组
+    for (int i = 1; i <= n; i++)
+        if (vis[i] != true)
+            for (int j = n; j > i; j--)
+            { // 在不超过w元的情况下，尽可能让每组的钱数最大
+                if (vis[j] != true && things[i] + things[j] <= w)
+                {
+                    ans++;
+                    vis[i] = true;
+                    vis[j] = true;
+                    break;
+                }
+            }
+    for (int i = 1; i <= n; i++)
+        if (vis[i] != true) // 有一些纪念品无法两个一组，就单独一组
+            ans++;
+    cout << ans << endl;
     return 0;
 }
