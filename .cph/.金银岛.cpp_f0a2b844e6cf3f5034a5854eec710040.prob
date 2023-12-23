@@ -1,1 +1,0 @@
-{"name":"Local: 金银岛","url":"d:\\Cpp\\金银岛.cpp","tests":[{"id":1700983858814,"input":"2\n50\n4\n10 100 50 30 7 34 87 100\n10000\n5\n1 43 43 323 35 45 43 54 87 43","output":"171.93\n508.00"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Cpp\\金银岛.cpp","group":"local","local":true}

@@ -11,7 +11,7 @@ struct qj
 {
     int l, r;
 } qarr[50005];
-inline bool cmp(qj a, qj b) { return a.l < b.l; }
+inline bool cmp(qj a, qj b) { return a.r <= b.r; }
 int main()
 {
     ios::sync_with_stdio(0);
